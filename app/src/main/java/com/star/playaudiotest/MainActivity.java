@@ -8,7 +8,6 @@ import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -30,38 +29,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mPlay = (Button) findViewById(R.id.play);
-        mPause = (Button) findViewById(R.id.pause);
-        mStop = (Button) findViewById(R.id.stop);
+        mPlay = findViewById(R.id.play);
+        mPause = findViewById(R.id.pause);
+        mStop = findViewById(R.id.stop);
 
-        mPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mPlay.setOnClickListener(v -> {
 
-                if (!mMediaPlayer.isPlaying()) {
-                    mMediaPlayer.start();
-                }
+            if (!mMediaPlayer.isPlaying()) {
+                mMediaPlayer.start();
             }
         });
 
-        mPause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mPause.setOnClickListener(v -> {
 
-                if (mMediaPlayer.isPlaying()) {
-                    mMediaPlayer.pause();
-                }
+            if (mMediaPlayer.isPlaying()) {
+                mMediaPlayer.pause();
             }
         });
 
-        mStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mStop.setOnClickListener(v -> {
 
-                if (mMediaPlayer.isPlaying()) {
-                    mMediaPlayer.reset();
-                    initMediaPlayer();
-                }
+            if (mMediaPlayer.isPlaying()) {
+                mMediaPlayer.reset();
+                initMediaPlayer();
             }
         });
 
